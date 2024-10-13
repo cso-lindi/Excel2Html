@@ -130,7 +130,7 @@ class HtmlConverter {
                             ?>
                             <td colspan="<?php echo $colspan ?>" excel-col="<?php echo $cell->getColumn() ?>" excel-cell-range="<?php echo $cell->getMergeRange() ?>" style="background: <?php echo $this->getBackground($cell) ?>; <?php echo $this->getBorder($cell) ?>; white-space: <?php echo !$cell->getStyle()->getAlignment()->getWrapText() ? 'nowrap' : ''; ?>;">
                                 <?php if ($cell->hasHyperlink()): ?>
-                                    <a href="<?php echo $cell->getHyperlink()->getUrl() ?>" <?php echo (isset($_GET['linksInNewTabs']) && ($_GET['linksInNewTabs'] == 1)) ? 'target="_blank" rel="noopener noreferrer"' : '' ?> style="text-decoration: <?php echo $this->getTextDecoration($cell) ?>; color: #<?php echo $font->getColor()->getRGB()?>; font-size: <?php echo $this->getFontSizePt($cell) ?>pt; text-align: <?php echo $this->getAlignment($cell) ?>;">
+                                    <a href="<?php echo $cell->getHyperlink()->getUrl() ?>" style="text-decoration: <?php echo $this->getTextDecoration($cell) ?>; color: #<?php echo $font->getColor()->getRGB()?>; font-size: <?php echo $this->getFontSizePt($cell) ?>pt; text-align: <?php echo $this->getAlignment($cell) ?>;">
                                         <text>
                                             <?php echo $tag ?>
                                                 <?php echo $value?>
