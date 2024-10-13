@@ -13,6 +13,7 @@
             "email": "lindemeier.sebastian@creativesolutionsoffice.com"
         }
     ],
+    "license": "MIT",
     "require": {
         "phpoffice/phpspreadsheet": "^3.3"
     },
