@@ -1,0 +1,22 @@
+{
+    "name": "cso/excel2html",
+    "description": "Convert Excel-sheets to their equivalent HTML-table representation",
+    "autoload": {
+        "psr-4": {
+            "CSO\\Excel2Html\\": "src/",
+            "CSO\\Excel2Html\\Exceptions\\": "src/exceptions/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sebastian Lindemeier",
+            "email": "lindemeier.sebastian@creativesolutionsoffice.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    }
+}
