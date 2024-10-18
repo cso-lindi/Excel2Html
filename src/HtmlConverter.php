@@ -26,7 +26,18 @@ class HtmlConverter {
     //ctor
     private function __construct(Worksheet $worksheet, int $styleOption = 0, array|null $columns = null, float $scale = 1.0){
         $this->styleOption = $styleOption;
-        $this->columns = $columns;
+        if(!is_null($columns)){
+            $tmpColumns = [];
+            foreach($columns as $col){
+                if(str_contains($col, "-")){
+                    $tmpColumns = array_merge($tmpColumns, ConverterHelpers::RangeToColumnArray($col));
+                }
+                else{
+                    array_push($tmpColumns, $col);
+                }
+            }
+            $this->columns = $tmpColumns;
+        }
         $this->scale = $scale;
         $this->worksheet = $worksheet;
         $this->html = '';
@@ -190,7 +201,8 @@ class HtmlConverter {
         do {
             ++$row;
             $array = $this->worksheet->rangeToArray($minCol.$row.':'.$maxCol.$row);
-            $value = trim(implode($array));
+            $valString = implode($array[$row]);
+            $value = trim($valString);
         } while ($row <= $highestRow && is_null($value));
         ++$row;
         return $row;
