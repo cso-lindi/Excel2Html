@@ -1,5 +1,4 @@
 <?php
-use CSO\Excel2Html\ConverterHelpers;
 use CSO\Excel2Html\Exceptions\SheetNotFoudException;
 use PHPUnit\Framework\TestCase;
 use CSO\Excel2Html\HtmlConverter;
@@ -67,7 +66,17 @@ final class HtmlConverterTest extends TestCase{
             'tests/assets/test.xlsx', 
             styleOption: StyleOptions::WITH_COLUMN_WIDTH | StyleOptions::COLUMN_WIDTH_PROPORTIONAL, 
             worksheetName:'TestTable', 
-            columns:['A', 'B-F'],
+            columns:['A', 'B-E', 'F'],
+            scale: 1.1);
+        $res = $conv->getHtml();
+        $expected = file_get_contents('tests/assets/results/testProp.html');
+        $this->assertSame($expected, $res);
+    }
+    public function testHtmlPropIsSameWithoutColumns(): void{
+        $conv = HtmlConverter::fromFilepath(
+            'tests/assets/test.xlsx', 
+            styleOption: StyleOptions::WITH_COLUMN_WIDTH | StyleOptions::COLUMN_WIDTH_PROPORTIONAL, 
+            worksheetName:'TestTable', 
             scale: 1.1);
         $res = $conv->getHtml();
         $expected = file_get_contents('tests/assets/results/testProp.html');

@@ -38,6 +38,9 @@ class HtmlConverter {
             }
             $this->columns = $tmpColumns;
         }
+        else{
+            $this->columns = ConverterHelpers::RangeToColumnArray('A-'.$worksheet->getHighestDataColumn());
+        }
         $this->scale = $scale;
         $this->worksheet = $worksheet;
         $this->html = '';
