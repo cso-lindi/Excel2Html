@@ -10,7 +10,12 @@ class ConverterHelpers{
      */
     public static function RangeToColumnArray(string $range): array{
         $rangeArray = explode("-",$range);
-        if(count($rangeArray) !== 2){
+        if(count($rangeArray) !== 2 
+            || strlen($rangeArray[0]) === 0 
+            || strlen($rangeArray[1]) === 0 
+            || !(strlen($rangeArray[0]) < strlen($rangeArray[1]) 
+                || (strlen($rangeArray[0]) === strlen($rangeArray[1]) 
+                    && strcmp($rangeArray[0], $rangeArray[1]) <= 0))){
             throw new MalformattedRangeStringException();
         }
         
